@@ -12,7 +12,7 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     pip install aiohttp pylru plyvel websockets python-rocksdb
     
 
-RUN git clone -b $VERSION https://github.com/magnublo/electrumx.git && \
+RUN git clone https://github.com/magnublo/electrumx.git && \
     cd electrumx && \
     python setup.py install && \
     apk del git build-base && \
