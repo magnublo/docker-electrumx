@@ -9,8 +9,10 @@ RUN VERSION=$(cat /tmp/VERSION) && \
     apk add --no-cache git build-base openssl && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/main leveldb-dev && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing rocksdb-dev && \
-    pip install aiohttp pylru plyvel websockets python-rocksdb && \
-    git clone -b $VERSION https://github.com/magnublo/electrumx.git && \
+    pip install aiohttp pylru plyvel websockets python-rocksdb
+    
+
+RUN git clone -b $VERSION https://github.com/magnublo/electrumx.git && \
     cd electrumx && \
     python setup.py install && \
     apk del git build-base && \
